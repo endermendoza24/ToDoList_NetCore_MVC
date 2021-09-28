@@ -1,0 +1,146 @@
+@model ListaToDo.ViewModels.VistaViewModel;
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>TODO List</title>
+</head>
+<body style="margin: 5px;">
+
+    <h1 style="font-size:30px; font-weight:700; text-transform:uppercase; text-align:center;">📗📗📗  Vista  📗📗📗</h1>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="alert alert-success" style="display:none;">
+                    <span class="glyphicon glyphicon-ok"></span> Drag table row and cange Order
+                </div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr class="warning">
+                            <td colspan="6">
+                                @using (var form = Html.BeginForm("CrearActualizar", "Vista", FormMethod.Post))
+                                {
+                                    @Html.HiddenFor(model => model.EditableItem.Id)
+                                <div class="input-group">
+                                    @Html.TextBoxFor(model => model.EditableItem.Titulo, new { @class = "form-control", placeholder = "Ingresa una tarea", @style = "display:block; color:#000; margin:10px; " })
+                                    @*@Html.TextBoxFor(model => Model.EditableItem.Prioridad, new { @class = "form-control", placeholder = "Prioridad" })*@
+
+                                    @Html.EditorFor(model => model.EditableItem.Fecha, "{0:dd-MM-yyyy}", new { @class = "form-control datepicker", placeholder = "Fecha vencimiento" })
+                                    <div class="input-field col s12">
+                                        @Html.DropDownListFor(model => model.EditableItem.Prioridad, new List<SelectListItem> // esto rellena el select con datos estaticos
+
+                              {
+                              new SelectListItem{Text="Prioridad 1", Value="1"},
+                              new SelectListItem{Text="Prioridad 2", Value="2"},
+                              new SelectListItem{Text="Prioridad 4", Value="3"},
+                              new SelectListItem{Text="Prioridad 5", Value="4"},
+
+                                  }, new { @class = "form-control", @style = "display:block; margin:10px; " })
+                                    </div>
+
+                                    @*@Html.TextBoxFor(model => model.EditableItem.Fecha, new { @class = "form-control", @type = "datetime" })*@
+                                    @*@Html.DisplayNameFor(model => model.EditableItem.Fecha)*@
+
+
+                                    @Html.TextBoxFor(model => model.EditableItem.Nombre, new { @class = "form-control", placeholder = "Ingresa una categoria", @style = "display:block; color:#000; margin:10px; " })
+
+                                    <div>
+                                        <button id="btn" type="submit" class="btn btn-success"><i class="fas fa-save">@(Model.EditableItem.Id > 0 ? "  Actualizar" : "  Agregar")</i></button>
+                                    </div>
+                                </div>
+                                    @Html.ValidationSummary()
+                                }
+                            </td>
+                        </tr>
+                        <tr class="bg-primary" style="font-size: 20px; font-weight:bold; color: #000;">
+                            <td class="text-left">Completada</td>
+                            <td class="text-center">Título de la tarea</td>
+                            <td class="text-center">Fecha vencimiento</td>
+                            <td class="text-center">Prioridad</td>
+                            <td class="text-center">Fecha creación</td>
+                            <td class="text-center">Categoria</td>
+                            <td></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            @foreach (var item in Model.Vis)
+                            {
+                            <tr class="danger">
+                                <td class="">
+                                    <input type="checkbox" checked="@item.Completada" onclick="window.location.href = '/Vista/TareaCompletada/@item.Id';" />
+                                </td>
+                                <td class="text-center">
+                                    <a href="/Tareas/Editar/@item.Id">
+                                        @item.Titulo
+                                    </a>
+                                </td>
+                                <td class="text-center">
+                                    @item.Fecha.ToShortDateString()
+                                </td>
+
+                                <td class="text-center">
+                                    @item.Prioridad.ToString()
+                                </td>
+
+
+                                <td class="text-center">
+                                    @item.FechaCreacion.ToShortDateString()
+                                </td>
+
+
+                                <td class="text-center">
+                                    @item.Nombre.ToString()
+                                </td>
+
+                                <td class="text-center">
+                                    <a href="/Vista/Borrar/@item.Id" onclick="return confirm('¿Estás seguro?');" class="btn btn-danger"><i class="fas fa-trash">  Eliminar</i></a>
+                                </td>
+                            </tr>
+                        }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script>
+            $(function () {
+                $("#Date").datepicker({ dateFormat: "dd / mm / yy" });
+            });
+        </script>
+
+
+        <script src="~/js/push.min.js"></script>
+
+        <script>
+            window.onload = function () {
+                Push.Permission.request();
+            }
+
+
+            document.getElementById('btn').onclick = function () {
+                Push.create('Tarea agregada', {
+                    body: 'Su tarea ha sido agregada con éxito',
+                    icon: '~/img/diskette.png',
+                    timeout: 5000,
+
+                })
+
+
+
+            }
+
+        </script>
+
+    </body>
+</html>

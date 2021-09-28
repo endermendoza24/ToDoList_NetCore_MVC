@@ -1,0 +1,101 @@
+
+@model ListaToDo.ViewModels.CategoriaViewModel;
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Categorías</title>
+    
+</head>
+<body style="margin: 5px;">
+
+    <h1 style="font-size:30px; font-weight:700; text-transform:uppercase; text-align:center;">✔✔✔  Categorías  ✔✔✔</h1>
+    <p>@ViewBag.Mensaje</p>
+    <h1>@ViewBag.Mensaje2</h1>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="alert alert-success" style="display:none;">
+                    <span class="glyphicon glyphicon-ok"></span> Drag table row and cange Order
+                </div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr class="warning">
+                            <td colspan="6">
+                                @using (var form = Html.BeginForm("CrearModificar", "Categoria", FormMethod.Post))
+                                {
+                                    @Html.HiddenFor(model => model.EditableItem.Id)
+                                    <div class="input-group">
+                                        @Html.TextBoxFor(model => model.EditableItem.Nombre, new { @class = "form-control", placeholder = "Ingresa una categoría" })
+
+                                        <div>
+                                            <button id="btn" type="submit" class="btn btn-success"><i class="fas fa-save">@(Model.EditableItem.Id > 0 ? "  Actualizar" : "  Agregar")</i></button>
+                                        </div>
+                                    </div>
+                                    @Html.ValidationSummary()
+                                }
+                            </td>
+                        </tr>
+                        <tr class="bg-primary" style="font-size: 20px; font-weight:bold; color: #000;">
+                            <td class="text-left">Nombre</td>
+                            <td class="text-center">Fecha creación</td>
+                            <td></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            @foreach (var item in Model.Cate)
+                            {
+                            <tr class="danger">
+
+                                <td class="text-center">
+                                    <a href="/Categoria/Editar/@item.Id">
+                                        @item.Nombre
+                                    </a>
+                                </td>
+                                <td class="text-center">
+                                    @item.FechaCreacion.ToShortDateString()
+                                </td>
+
+
+                                <td class="text-center">
+                                    <a href="/Categoria/Borrar/@item.Id" onclick="return confirm('¿Estás seguro?');" class="btn btn-danger"><i class="fas fa-trash">  Eliminar</i></a>
+                                </td>
+                            </tr>
+                        }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        
+
+        <script src="~/js/push.min.js"></script>
+
+        <script>
+            window.onload = function () {
+                Push.Permission.request();
+            }
+
+
+            document.getElementById('btn').onclick = function () {
+                Push.create('Categoria agregada', {
+                    body: 'La categoría ha sido agregada con éxito',
+                    icon: '~/img/diskette.png',
+                    timeout: 5000,
+
+                })
+
+
+
+            }
+
+        </script>
+
+    </body>
+</html>
