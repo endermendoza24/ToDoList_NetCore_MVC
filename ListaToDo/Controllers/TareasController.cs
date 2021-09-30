@@ -56,6 +56,7 @@ namespace ListaToDo.Controllers
                         db.Update<ToDoListItem>(dbItem);
                     }
                 }
+                 TempData["mensaje"] = "La tarea se ha creado correctamente";
                 return RedirectToAction("Index");
             }
             else
