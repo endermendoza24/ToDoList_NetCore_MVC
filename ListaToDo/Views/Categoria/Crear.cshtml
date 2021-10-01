@@ -6,15 +6,17 @@
 <html>
 <head>
     <title>Categorías</title>
+
     
 </head>
 <body style="margin: 5px;">
 
     <h1 style="font-size:30px; font-weight:700; text-transform:uppercase; text-align:center;">✔✔✔  Categorías  ✔✔✔</h1>
-    <p>@ViewBag.Mensaje</p>
-    <h1>@ViewBag.Mensaje2</h1>
+ 
+   
 
     <div class="container">
+        
         <div class="row">
             <div class="col-md-12">
 
@@ -62,7 +64,16 @@
 
 
                                 <td class="text-center">
-                                    <a href="/Categoria/Borrar/@item.Id" onclick="return confirm('¿Estás seguro?');" class="btn btn-danger"><i class="fas fa-trash">  Eliminar</i></a>
+                                    
+                                    <a class="btn btn-danger delete"
+                                       data-id="@item.Id"
+                                       data-controller="Categoria"
+                                       data-action="Borrar"
+                                       data-body-message ="Si elimina una categoría, todas las tareas de esa categoría serán borradas de forma permanente"
+                                       href="/Categoria/Borrar/@item.Id"
+                                       
+                                       
+                                       ><i class="fas fa-trash">  Eliminar</i></a>
                                 </td>
                             </tr>
                         }
@@ -72,9 +83,7 @@
                 </div>
             </div>
         </div>
-
         
-
         <script src="~/js/push.min.js"></script>
 
         <script>
@@ -90,12 +99,9 @@
                     timeout: 5000,
 
                 })
-
-
-
             }
 
         </script>
-
+        @*<partial name="_NotificationPartial" />*@
     </body>
 </html>

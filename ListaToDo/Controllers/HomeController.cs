@@ -1,4 +1,5 @@
-﻿using ListaToDo.Models;
+﻿using ListaToDo.Extensions;
+using ListaToDo.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ListaToDo.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         private readonly ILogger<HomeController> _logger;
 
@@ -20,6 +21,7 @@ namespace ListaToDo.Controllers
 
         public IActionResult Index()
         {
+            BasicNotification("Una nueva notificación", NotificationType.Success);
             return View();
         }
 

@@ -6,19 +6,19 @@ using Dapper;
 using Dapper.Contrib.Extensions;
 using ListaToDo.ViewModels;
 using ListaToDo.Helpers;
-
+using ListaToDo.Extensions;
 
 namespace TodoList.Controllers
 {
-    public class CategoriaController : Controller
+    public class CategoriaController : BaseController
     {
         CategoriaViewModel modeloCategoria = new CategoriaViewModel();
 
         public IActionResult Ver()
-        {
-            ViewBag.Mensaje2 = modeloCategoria.EditableItem.FechaCreacion.Date;
-            ViewBag.Mensaje = "Mi primer mensaje";
+        {            
+            
             CategoriaViewModel viewModel = new CategoriaViewModel();
+            
             return View("Crear", viewModel);
         }
 
@@ -36,7 +36,9 @@ namespace TodoList.Controllers
                 Categoria item = db.Get<Categoria>(id);
                 if (item != null)
                     db.Delete(item);
+
                 return RedirectToAction("Ver");
+                
             }
         }
 

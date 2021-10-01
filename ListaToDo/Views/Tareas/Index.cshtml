@@ -121,7 +121,16 @@
                                 </td>
 
                                 <td class="text-center">
-                                    <a href="/Tareas/Borrar/@item.Id" onclick="return confirm('¿Estás seguro?');" class="btn btn-danger"><i class="fas fa-trash">  Eliminar</i></a>
+                                    
+                                    <a class="btn btn-danger delete"
+                                       data-id="@item.Id"
+                                       data-controller="Tareas"
+                                       data-action="Borrar"
+                                       data-body-message ="¿Está seguro?, esta acción es irreversible..."
+                                       href="/Tareas/Borrar/@item.Id"
+                                       
+                                       
+                                       ><i class="fas fa-trash">  Eliminar</i></a>
                                 </td>
                             </tr>
                         }

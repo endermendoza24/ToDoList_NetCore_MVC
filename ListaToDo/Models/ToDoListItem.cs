@@ -11,7 +11,7 @@ namespace ListaToDo.Models
 
         [Required(ErrorMessage = "El título es obligatorio ")]
 
-        [StringLength(200, ErrorMessage = "El {0} debe ser al menos {2} y maximo {1} caracteres", MinimumLength = 2)]
+        [StringLength(250, ErrorMessage = "El {0} debe ser al menos {2} y maximo {1} caracteres", MinimumLength = 2)]
 
         [Display(Name = "Titulo")]
         public string Titulo { get; set; }
