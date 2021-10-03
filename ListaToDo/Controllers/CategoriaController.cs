@@ -36,7 +36,7 @@ namespace TodoList.Controllers
                 Categoria item = db.Get<Categoria>(id);
                 if (item != null)
                     db.Delete(item);
-
+                    TempData["mensaje"] = "Borrada con exito";
                 return RedirectToAction("Ver");
                 
             }
@@ -60,6 +60,7 @@ namespace TodoList.Controllers
                         db.Update<Categoria>(dbItem);
                     }
                 }
+                TempData["mensaje"] = "Categoría creada con éxito";
                 return RedirectToAction("Ver");
             }
             else

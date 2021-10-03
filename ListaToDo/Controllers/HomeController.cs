@@ -21,7 +21,7 @@ namespace ListaToDo.Controllers
 
         public IActionResult Index()
         {
-            BasicNotification("Una nueva notificación", NotificationType.Success);
+            BasicNotification("Bienvenido a a la lista de tareas", NotificationType.Success);
             return View();
         }
 
