@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ListaToDo.ViewModels;
+using Newtonsoft.Json;
 
 namespace ListaToDo.Controllers
 {
@@ -42,19 +43,27 @@ namespace ListaToDo.Controllers
         {
             if (ModelState.IsValid)
             {
-                using (var db = DbHelper.GetConnection())
+                try
                 {
-                    if (viewModel.EditableItem.Id <= 0)
+                    using (var db = DbHelper.GetConnection())
                     {
-                        viewModel.EditableItem.FechaCreacion = DateTime.Now; //  para darle el valor de la fecha actual al momento de registrar a fecha actual                        
-                        db.Insert<ToDoListItem>(viewModel.EditableItem);
+                        if (viewModel.EditableItem.Id <= 0)
+                        {
+                            viewModel.EditableItem.FechaCreacion = DateTime.Now; //  para darle el valor de la fecha actual al momento de registrar a fecha actual                        
+                            db.Insert<ToDoListItem>(viewModel.EditableItem);
+                        }
+                        else
+                        {
+                            ToDoListItem dbItem = db.Get<ToDoListItem>(viewModel.EditableItem.Id);
+                            TryUpdateModelAsync<ToDoListItem>(dbItem, "EditableItem");
+                            db.Update<ToDoListItem>(dbItem);
+                        }
                     }
-                    else
-                    {
-                        ToDoListItem dbItem = db.Get<ToDoListItem>(viewModel.EditableItem.Id);
-                        TryUpdateModelAsync<ToDoListItem>(dbItem, "EditableItem");
-                        db.Update<ToDoListItem>(dbItem);
-                    }
+                    TempData["mensaje"] = "La tarea se ha creado correctamente";
+                }
+                catch (Exception)
+                {
+                    TempData["Error"] = "Ha ocurrido un error al guardar o actualizar la tarea";
                 }
                  TempData["mensaje"] = "La tarea se ha creado correctamente";
                 return RedirectToAction("Index");
@@ -75,7 +84,9 @@ namespace ListaToDo.Controllers
                 }
                 return RedirectToAction("Index");
             }
-        }
+        }       
+
+
 
     }
 }

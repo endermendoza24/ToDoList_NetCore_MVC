@@ -18,6 +18,16 @@ namespace TodoList.Controllers
         {            
             
             CategoriaViewModel viewModel = new CategoriaViewModel();
+
+
+            if (viewModel.EditableItem.Nombre == "Lista de compras" || viewModel.EditableItem.Nombre == "Clases")
+            {
+                TempData["fecha"] =  "La fecha con creces supera a la mayor";
+            }
+            else
+            {
+                TempData["fecha"] =  "La fecha con creces NO supera a la mayor";
+            }
             
             return View("Crear", viewModel);
         }
@@ -28,6 +38,8 @@ namespace TodoList.Controllers
             viewModel.EditableItem = viewModel.Cate.FirstOrDefault(x => x.Id == id);
             return View("Crear", viewModel);
         }
+
+       
 
         public IActionResult Borrar(int id)
         {
@@ -46,7 +58,10 @@ namespace TodoList.Controllers
         {
             if (ModelState.IsValid)
             {
-                using (var db = DbHelper.GetConnection())
+                
+                try
+                {
+                     using (var db = DbHelper.GetConnection())
                 {
                     if (viewModel.EditableItem.Id <= 0)
                     {
@@ -61,6 +76,11 @@ namespace TodoList.Controllers
                     }
                 }
                 TempData["mensaje"] = "Categoría creada con éxito";
+                }
+                catch (System.Exception)
+                {
+                    TempData["Error"] = "Ha ocurrido un error al guardar la categoría";
+                }
                 return RedirectToAction("Ver");
             }
             else

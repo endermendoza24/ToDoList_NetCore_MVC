@@ -14,17 +14,31 @@
     <div class="container">
 
         @if (TempData["mensaje"] != null)
-    {
+        {
 
-        <div class="alert alert-info  alert-dismissible fade show" role="alert">
+            <div class="alert alert-info  alert-dismissible fade show" role="alert">
 
-            @TempData["mensaje"]
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
+                @TempData["mensaje"]
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
 
-        </div>
-    }
+            </div>
+        }
+
+        @if (TempData["Error"] != null)
+        {
+
+            <div class="alert alert-danger  alert-dismissible fade show" role="alert">
+
+                @TempData["Error"]
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+
+            </div>
+        }
+
 
         <div class="row">
             <div class="col-md-12">
@@ -41,7 +55,7 @@
                                     @Html.HiddenFor(model => model.EditableItem.Id)
                                     @Html.TextBoxFor(model => model.EditableItem.Titulo, new { @class = "form-control", placeholder = "Ingresa una tarea", @style = "display:block; color:#000; margin:10px; " })
                                     <div class="input-group">
-                                        
+
                                         @*@Html.TextBoxFor(model => Model.EditableItem.Prioridad, new { @class = "form-control", placeholder = "Prioridad" })*@
 
                                         <div class="input-field col s12">
@@ -66,15 +80,15 @@
                                         @Html.DropDownListFor(model => model.EditableItem.IdCategoria, new List<SelectListItem> // esto rellena el select con datos estaticos
 
                                   {
-                                  @* new SelectListItem{Text=@EditableItem.Titulo}, *@
-                                  new SelectListItem{Text="Hogar", Value="1"},                                  
-                                      }, new { @class = "form-control", @style = "display:block; margin:10px; " })
+                        @* new SelectListItem{Text=@EditableItem.Titulo}, *@
+new SelectListItem{Text="Hogar", Value="800"},
+}, new { @class = "form-control", @style = "display:block; margin:10px; " })
 
-                                       
+
                                     </div>
-                                     <div>
-                                            <button id="btn" type="submit" class="btn btn-info btn-block"><i class="fas fa-save">@(Model.EditableItem.Id > 0 ? "  Actualizar" : "  Agregar")</i></button>
-                                        </div>
+                                    <div>
+                                        <button id="btn" type="submit" class="btn btn-info btn-block"><i class="fas fa-save">@(Model.EditableItem.Id > 0 ? "  Actualizar" : "  Agregar")</i></button>
+                                    </div>
                                     @Html.ValidationSummary()
                                 }
                             </td>
@@ -121,16 +135,13 @@
                                 </td>
 
                                 <td class="text-center">
-                                    
+
                                     <a class="btn btn-danger delete"
                                        data-id="@item.Id"
                                        data-controller="Tareas"
                                        data-action="Borrar"
-                                       data-body-message ="¿Está seguro?, esta acción es irreversible..."
-                                       href="/Tareas/Borrar/@item.Id"
-                                       
-                                       
-                                       ><i class="fas fa-trash">  Eliminar</i></a>
+                                       data-body-message="¿Está seguro?, esta acción es irreversible..."
+                                       href="/Tareas/Borrar/@item.Id"><i class="fas fa-trash">  Eliminar</i></a>
                                 </td>
                             </tr>
                         }

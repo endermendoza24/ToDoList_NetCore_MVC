@@ -1,4 +1,5 @@
 using ListaToDo.Data;
+using ListaToDo.ViewModels;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -22,6 +23,7 @@ namespace ListaToDo
         {
             Configuration = configuration;
         }
+
 
         public IConfiguration Configuration { get; }
 
