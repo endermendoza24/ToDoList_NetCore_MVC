@@ -58,11 +58,11 @@ table .switch{
 }
 
 input:checked + .slider{
-    background-color: #8f44fd;
+    background-color: #28a745;
 
 }
  input:focus +  .slider{
-    box-shadow:  0 0 1px #8f44fd;
+    box-shadow:  0 0 1px #28a745;
 }
 
  input:checked + .slider::before{
@@ -115,7 +115,7 @@ input:checked + .slider{
 
 
 
- .contenedor-inputs .wrapper input:focus{border-color: #8f44fd;}
+ .contenedor-inputs .wrapper input:focus{border-color: #28a745;}
  .contenedor-inputs .wrapper input:focus ~ .icon {
      color: #fff;
  }
@@ -177,7 +177,7 @@ input:checked + .slider{
 }
 
 .btn-agregar{
-    background-color: #8f44fd;
+    background-color: #28a745;
     width: 126%;
     color: #fff;
     font-size: 20px;
@@ -185,7 +185,9 @@ input:checked + .slider{
     border-radius: 8px;
     outline: 0;
     border: 0;
+    transition: all .86s;
 }
 .btn-agregar:hover{
-    background-color: #9f7ad8;
+    background-color: #238339;
 }
+

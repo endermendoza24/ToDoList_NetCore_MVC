@@ -10,7 +10,7 @@
 </head>
 <body style="margin: 5px;">
 
-    <h1 style="font-size:30px; font-weight:700; text-transform:uppercase; text-align:center;">📗📗📗  Lista de tareas  📗📗📗</h1>
+    <h1 style="font-size:30px; color:#fff; font-weight:700; text-transform:uppercase; text-align:center;">📗📗📗  Lista de tareas  📗📗📗</h1>
     
     <div class="container">
 
@@ -67,10 +67,10 @@
                                              @Html.DropDownListFor(model => model.EditableItem.Prioridad, new List<SelectListItem> // esto rellena el select con datos estaticos
 
                                             {
-                                            new SelectListItem{Text="Prioridad 1", Value="1"},
-                                            new SelectListItem{Text="Prioridad 2", Value="2"},
-                                            new SelectListItem{Text="Prioridad 4", Value="3"},
-                                            new SelectListItem{Text="Prioridad 5", Value="4"},
+                                            new SelectListItem{Text="Baja", Value="1"},
+                                            new SelectListItem{Text="Media", Value="2"},
+                                            new SelectListItem{Text="Alta", Value="3"}
+
 
                                                 }, new { @class = "selector" })
                                         </div>
@@ -79,15 +79,16 @@
                                             @Html.EditorFor(model => model.EditableItem.Fecha, "{0:dd-MM-yyyy}", new { @class = "calendario" })
                                         </div>
 
-                                        <div class="categoria">
+                                         <div class="categoria">
                                              @Html.DropDownListFor(model => model.EditableItem.IdCategoria, new List<SelectListItem> // esto rellena el select con datos estaticos
 
                                         {
-                                         @* new SelectListItem{Text=@EditableItem.Titulo}, *@
+                                          
                                         new SelectListItem{Text="Hogar", Value="800"},
                                         }, new { })
 
-                                        </div>
+                                        </div> 
+
 
                                      <div class="boton">
                                         <button id="btn" type="submit" class="btn-agregar"><i class="fas fa-save">@(Model.EditableItem.Id > 0 ? "  Actualizar" : "  Agregar")</i></button>
@@ -147,12 +148,12 @@
 
                                 <td class="text-center">
 
-                                    <a class="btn btn-danger delete"
+                                    <a class="btn btn-danger btn-md"
                                        data-id="@item.Id"
                                        data-controller="Tareas"
                                        data-action="Borrar"
                                        data-body-message="¿Está seguro?, esta acción es irreversible..."
-                                       href="/Tareas/Borrar/@item.Id"><i class="fas fa-trash">  Eliminar</i></a>
+                                       href="/Tareas/Borrar/@item.Id"><i class="fas fa-trash">  Borrar</i></a>
                                 </td>
                             </tr>
                         }

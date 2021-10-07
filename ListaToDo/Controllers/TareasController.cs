@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ListaToDo.ViewModels;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ListaToDo.Controllers
 {
@@ -45,6 +46,8 @@ namespace ListaToDo.Controllers
             {
                 try
                 {
+
+
                     using (var db = DbHelper.GetConnection())
                     {
                         if (viewModel.EditableItem.Id <= 0)
@@ -64,8 +67,7 @@ namespace ListaToDo.Controllers
                 catch (Exception)
                 {
                     TempData["Error"] = "Ha ocurrido un error al guardar o actualizar la tarea";
-                }
-                 TempData["mensaje"] = "La tarea se ha creado correctamente";
+                }                 
                 return RedirectToAction("Index");
             }
             else
