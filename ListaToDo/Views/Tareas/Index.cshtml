@@ -55,47 +55,47 @@
                                 @using (var form = Html.BeginForm("CrearActualizar", "Tareas", FormMethod.Post))
                                 {
                                     @Html.HiddenFor(model => model.EditableItem.Id)
-                                    <div class="wrapper">
-                                        
-                                        @Html.TextBoxFor(model => model.EditableItem.Titulo, new {  })
-                                        <div class="label">Agregar tarea</div>
-                                        
-                                    </div>
-                                    <div class="input-group">
 
-                                        @*@Html.TextBoxFor(model => Model.EditableItem.Prioridad, new { @class = "form-control", placeholder = "Prioridad" })*@
-
-                                        <div class="input-field col s12">
-                                            @Html.DropDownListFor(model => model.EditableItem.Prioridad, new List<SelectListItem> // esto rellena el select con datos estaticos
-
-                                  {
-                                  new SelectListItem{Text="Prioridad 1", Value="1"},
-                                  new SelectListItem{Text="Prioridad 2", Value="2"},
-                                  new SelectListItem{Text="Prioridad 4", Value="3"},
-                                  new SelectListItem{Text="Prioridad 5", Value="4"},
-
-                                      }, new { @class = "form-control", @style = "display:block; margin:10px; " })
+                                    <div class="contenedor-inputs">
+                                       
+                                            <div class="wrapper">
+                                                 @Html.TextBoxFor(model => model.EditableItem.Titulo, new {placeholder="Agregar tarea"  })
+                                            @* <div class="label">Agregar tarea</div> *@
                                         </div>
 
-                                        @*@Html.TextBoxFor(model => model.EditableItem.Fecha, new { @class = "form-control", @type = "datetime" })*@
-                                        @*@Html.DisplayNameFor(model => model.EditableItem.Fecha)*@
-                                        @Html.EditorFor(model => model.EditableItem.Fecha, "{0:dd-MM-yyyy}", new { @class = "form-control datepicker", placeholder = "Fecha vencimiento" })
+                                        <div class="prioridad">
+                                             @Html.DropDownListFor(model => model.EditableItem.Prioridad, new List<SelectListItem> // esto rellena el select con datos estaticos
 
-                                        @* @Html.TextBoxFor(model => model.EditableItem.IdCategoria, new { @class = "form-control", placeholder = "Ingresa una categoria", @style = "display:block; color:#000; margin:10px; " }) *@
+                                            {
+                                            new SelectListItem{Text="Prioridad 1", Value="1"},
+                                            new SelectListItem{Text="Prioridad 2", Value="2"},
+                                            new SelectListItem{Text="Prioridad 4", Value="3"},
+                                            new SelectListItem{Text="Prioridad 5", Value="4"},
 
+                                                }, new { @class = "selector" })
+                                        </div>
 
-                                        @Html.DropDownListFor(model => model.EditableItem.IdCategoria, new List<SelectListItem> // esto rellena el select con datos estaticos
+                                        <div class="fecha">
+                                            @Html.EditorFor(model => model.EditableItem.Fecha, "{0:dd-MM-yyyy}", new { @class = "calendario" })
+                                        </div>
 
-                                  {
-                        @* new SelectListItem{Text=@EditableItem.Titulo}, *@
-new SelectListItem{Text="Hogar", Value="800"},
-}, new { @class = "form-control", @style = "display:block; margin:10px; " })
+                                        <div class="categoria">
+                                             @Html.DropDownListFor(model => model.EditableItem.IdCategoria, new List<SelectListItem> // esto rellena el select con datos estaticos
 
+                                        {
+                                         @* new SelectListItem{Text=@EditableItem.Titulo}, *@
+                                        new SelectListItem{Text="Hogar", Value="800"},
+                                        }, new { })
+
+                                        </div>
+
+                                     <div class="boton">
+                                        <button id="btn" type="submit" class="btn-agregar"><i class="fas fa-save">@(Model.EditableItem.Id > 0 ? "  Actualizar" : "  Agregar")</i></button>
+                                    </div>
 
                                     </div>
-                                    <div>
-                                        <button id="btn" type="submit" class="btn btn-info btn-block"><i class="fas fa-save">@(Model.EditableItem.Id > 0 ? "  Actualizar" : "  Agregar")</i></button>
-                                    </div>
+
+                                   
                                     @Html.ValidationSummary()
                                 }
                             </td>

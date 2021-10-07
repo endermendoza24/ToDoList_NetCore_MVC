@@ -78,13 +78,14 @@ input:checked + .slider{
 /*Inputs*/
 
 
-.wrapper{
+.contenedor-inputs .wrapper{
     position: relative;
     display: flex;
-    height: 4rem;    
-    width: 100%;
+    height: 3rem;    
+    width: 188%;
+    
  }
- .wrapper .label{
+ .contenedor-inputs .wrapper .label{
      position: absolute;
      top: 50%;
      left: 0.65rem;
@@ -95,9 +96,8 @@ input:checked + .slider{
      transition: all 0.35s;     
  }
  
- .wrapper input{
-     height: inherit;
-     
+ .contenedor-inputs .wrapper input, select{
+     height: inherit;     
      width: 100%;
      border: 2px solid #888;
      border-radius: .5rem;
@@ -109,14 +109,83 @@ input:checked + .slider{
      transition: all .35s;
  }
 
- .wrapper input:focus{border-color: #8f44fd;}
- .wrapper input:focus ~ .icon {
+ .contenedor-inputs .wrapper input{
+     width: 60%;
+ }
+
+
+
+ .contenedor-inputs .wrapper input:focus{border-color: #8f44fd;}
+ .contenedor-inputs .wrapper input:focus ~ .icon {
      color: #fff;
  }
 
- .wrapper input:focus ~ .label{
+ .contenedor-inputs .wrapper input:focus ~ .label{
      background-color:  #383c44;
      color: rgba(255, 255, 255, 0.75);
      font-size: 18px;
      transform: translateY(-3.1rem);
  }
+
+
+ .contenedor-inputs{
+     display: grid;
+     gap: 10px;
+     grid-template-columns: repeat(2,1fr);
+     grid-template-rows: auto;
+     grid-template-areas:
+         "wrapper wrapper "
+        "prioridad fecha"
+        "categoria boton";
+ }
+
+.contenedor-inputs .wrapper{
+    grid-area: wrapper;
+   ;
+}
+.contenedor-inputs .prioridad{
+    grid-area: prioridad;
+    height: 3rem;
+}
+
+.contenedor-inputs .fecha{
+    grid-area: fecha;
+    height: 3rem;
+}
+.contenedor-inputs .fecha input{
+    height: inherit;     
+    width: 126%;
+    border: 2px solid #888;
+    border-radius: .5rem;
+    outline: none;
+    background-color: transparent;
+    color: #f7f7f7;
+    font-size: 1rem;
+    text-indent: 1rem;
+    transition: all .35s;
+}
+
+.contenedor-inputs .categoria{
+    grid-area: categoria;
+    height:3rem;
+    
+}
+.contenedor-inputs .boton{
+    grid-area: boton;
+    height: 3rem;
+    width: 100%;
+}
+
+.btn-agregar{
+    background-color: #8f44fd;
+    width: 126%;
+    color: #fff;
+    font-size: 20px;
+    height: 3rem;
+    border-radius: 8px;
+    outline: 0;
+    border: 0;
+}
+.btn-agregar:hover{
+    background-color: #9f7ad8;
+}
