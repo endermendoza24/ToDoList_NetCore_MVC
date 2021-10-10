@@ -15,7 +15,8 @@ namespace ListaToDo.ViewModels
             using (var db = DbHelper.GetConnection())
             {
                 this.EditableItem = new ToDoListItem();
-                this.TodoItems = db.Query<ToDoListItem>("SELECT * FROM ToDoListItems ORDER BY Fecha ASC").ToList();
+              this.TodoItems = db.Query<ToDoListItem>("SELECT * FROM ToDoListItems ORDER BY Fecha ASC").ToList();
+                // this.TodoItems = db.Query<ToDoListItem>("SELECT        dbo.TodoListItems.Id, dbo.TodoListItems.Completada, dbo.TodoListItems.Titulo, dbo.TodoListItems.Fecha, dbo.TodoListItems.Prioridad, dbo.TodoListItems.FechaCreacion, dbo.Categorias.Nombre FROM            dbo.Categorias INNER JOIN dbo.TodoListItems ON dbo.Categorias.Id = dbo.TodoListItems.IdCategoria").ToList();
             }
         }
 

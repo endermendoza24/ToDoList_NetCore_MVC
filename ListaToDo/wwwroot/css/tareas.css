@@ -4,13 +4,7 @@ body{
 table{
     border-radius: 15px;
 }
-a{
-    color:#fff;
-    font-size:20px;            
-}
-a:hover{
-    text-decoration: underline;
-}
+
 
 table .switch{
    position: relative;
@@ -19,6 +13,13 @@ table .switch{
    height: 34px;
 }
 
+table a{
+    font-size: 20px;
+    color: #fff;
+}
+table a:hover{
+    text-decoration: none;
+}
 
 .titulo-tabla{
     
@@ -191,3 +192,9 @@ input:checked + .slider{
     background-color: #238339;
 }
 
+
+ input[type=checkbox]:checked + p {
+    background-color: red;
+    color: yellow;
+   
+}

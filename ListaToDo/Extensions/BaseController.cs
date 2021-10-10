@@ -40,6 +40,8 @@ namespace ListaToDo.Extensions
                 + toast.ToString().ToLower() + ",timer: " + timer + "}); ";
         }
 
+       
+
         #region Methods
 
         private void SetPosition(string position)

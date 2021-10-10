@@ -84,7 +84,7 @@
 
                                         {
                                           
-                                        new SelectListItem{Text="Hogar", Value="800"},
+                                        new SelectListItem{Text="Jardinería", Value="1"},
                                         }, new { })
 
                                         </div> 
@@ -120,7 +120,7 @@
                                 <td>
                                    <label class="switch">
                                         <input  type="checkbox" checked="@item.Completada" onclick="window.location.href = '/Tareas/TareaCompletada/@item.Id';" />
-                                    <span class="slider round"></span>
+                                    <span class="slider round"></span>                                  
                                    </label>
                                 </td>
                                 <td class="text-center">
@@ -170,17 +170,13 @@
             window.onload = function () {
                 Push.Permission.request();
             }
-
-
             document.getElementById('btn').onclick = function () {
                 Push.create('Tarea agregada', {
                     body: 'Su tarea ha sido agregada con éxito',
                     icon: '~/img/diskette.png',
                     timeout: 5000,
-
                 })
             }
-
         </script>
 
     </body>

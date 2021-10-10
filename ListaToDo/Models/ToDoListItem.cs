@@ -25,6 +25,7 @@ namespace ListaToDo.Models
         public DateTime Fecha { get; set; } = System.DateTime.Today;
 
         public bool Completada { get; set; }
+        // public string Nombre { get; set; }
         public int IdCategoria { get; set; }
     }
 }

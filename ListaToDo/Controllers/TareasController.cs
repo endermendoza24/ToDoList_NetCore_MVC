@@ -44,8 +44,8 @@ namespace ListaToDo.Controllers
         {
             if (ModelState.IsValid)
             {
-                try
-                {
+                // try
+                // {
 
 
                     using (var db = DbHelper.GetConnection())
@@ -63,11 +63,11 @@ namespace ListaToDo.Controllers
                         }
                     }
                     TempData["mensaje"] = "La tarea se ha creado correctamente";
-                }
-                catch (Exception)
-                {
-                    TempData["Error"] = "Ha ocurrido un error al guardar o actualizar la tarea";
-                }                 
+                //}
+                // catch (Exception)
+                // {
+                //     TempData["Error"] = "Ha ocurrido un error al guardar o actualizar la tarea";
+                // }                 
                 return RedirectToAction("Index");
             }
             else
