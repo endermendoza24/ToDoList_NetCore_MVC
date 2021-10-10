@@ -56,45 +56,41 @@
                                 {
                                     @Html.HiddenFor(model => model.EditableItem.Id)
 
-                                    <div class="contenedor-inputs">
-                                       
-                                            <div class="wrapper">
-                                                 @Html.TextBoxFor(model => model.EditableItem.Titulo, new {placeholder="Agregar tarea"  })
-                                            @* <div class="label">Agregar tarea</div> *@
-                                        </div>
+                            <div class="contenedor-inputs">
 
-                                        <div class="prioridad">
-                                             @Html.DropDownListFor(model => model.EditableItem.Prioridad, new List<SelectListItem> // esto rellena el select con datos estaticos
+                                <div class="wrapper">
+                                    @Html.TextBoxFor(model => model.EditableItem.Titulo, new { placeholder = "Agregar tarea" })
+                                    @* <div class="label">Agregar tarea</div> *@
+                                </div>
 
-                                            {
-                                            new SelectListItem{Text="Baja", Value="1"},
-                                            new SelectListItem{Text="Media", Value="2"},
-                                            new SelectListItem{Text="Alta", Value="3"}
+                                <div class="prioridad">
+                                    @Html.DropDownListFor(model => model.EditableItem.Prioridad, new List<SelectListItem> // esto rellena el select con datos estaticos
 
-
-                                                }, new { @class = "selector" })
-                                        </div>
-
-                                        <div class="fecha">
-                                            @Html.EditorFor(model => model.EditableItem.Fecha, "{0:dd-MM-yyyy}", new { @class = "calendario" })
-                                        </div>
-
-                                         <div class="categoria">
-                                             @Html.DropDownListFor(model => model.EditableItem.IdCategoria, new List<SelectListItem> // esto rellena el select con datos estaticos
-
-                                        {
-                                          
-                                        new SelectListItem{Text="Jardinería", Value="1"},
-                                        }, new { })
-
-                                        </div> 
+                                   {
+                                   new SelectListItem{Text="Baja", Value="1"},
+                                   new SelectListItem{Text="Media", Value="2"},
+                                   new SelectListItem{Text="Alta", Value="3"}
 
 
-                                     <div class="boton">
-                                        <button id="btn" type="submit" class="btn-agregar"><i class="fas fa-save">@(Model.EditableItem.Id > 0 ? "  Actualizar" : "  Agregar")</i></button>
-                                    </div>
+                                       }, new { @class = "selector" })
+                                </div>
 
-                                    </div>
+                                <div class="fecha">
+                                    @Html.EditorFor(model => model.EditableItem.Fecha, "{0:dd-MM-yyyy}", new { @class = "calendario" })
+                                </div>
+
+                               
+                            <div class="categoria">
+                                <select asp-for="EditableItem.IdCategoria"
+                                        class="" asp-items="@(new SelectList(ViewBag.ListOfProduct, "Value", "Text"))">
+                                </select>
+                            </div>
+
+                                <div class="boton">
+                                    <button id="btn" type="submit" class="btn-agregar"><i class="fas fa-save">@(Model.EditableItem.Id > 0 ? "  Actualizar" : "  Agregar")</i></button>
+                                </div>
+
+                            </div>
 
                                    
                                     @Html.ValidationSummary()

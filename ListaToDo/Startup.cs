@@ -1,4 +1,5 @@
 using ListaToDo.Data;
+using ListaToDo.Models;
 using ListaToDo.Services;
 using ListaToDo.ViewModels;
 using Microsoft.AspNetCore.Builder;
@@ -32,6 +33,14 @@ namespace ListaToDo
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+
+            var connection = Configuration.GetConnectionString("DefaultConnection");
+            services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(connection));
+
+
+
+
 
             services.AddTransient<Microsoft.Extensions.Hosting.IHostedService, WriteToFileHostedService>();
 

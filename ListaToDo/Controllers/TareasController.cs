@@ -14,11 +14,42 @@ namespace ListaToDo.Controllers
 {
     public class TareasController : Controller
     {
+        private DatabaseContext _databaseContext;
+
+        public TareasController(DatabaseContext databaseContext)
+        {
+            _databaseContext = databaseContext;
+        }
+
+
+
+
         //  Get
         public IActionResult Index()
         {
+
+            var CategoriasList = (from categoria in _databaseContext.Categorias
+                                  select new SelectListItem()
+                                  {
+                                      Text = categoria.Nombre,
+                                      Value = categoria.Id.ToString()
+                                  }).ToList();
+            //CategoriasList.Insert(0, new SelectListItem()
+            //{
+            //    Text = "--- Seleccione un elemento ---",
+            //    Value = string.Empty
+            //});
+            ViewBag.ListOfProduct = CategoriasList;
+
             TareasViewModel viewModel = new TareasViewModel();
             return View("Index", viewModel);
+        }
+
+        [HttpPost]
+        public IActionResult Index(CategoriaViewModel categoriaViewModel)
+        {
+            var selectedValue = categoriaViewModel.EditableItem.Id;
+            return View(categoriaViewModel);
         }
 
         public IActionResult Editar(int id)
