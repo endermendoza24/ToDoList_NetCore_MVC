@@ -1,9 +1,11 @@
 body{
-    background: #086972;
+    background: #7a1596;
 }
 table{
     border-radius: 15px;
+    width: 100%;
 }
+
 
 
 table .switch{
@@ -83,7 +85,7 @@ input:checked + .slider{
     position: relative;
     display: flex;
     height: 3rem;    
-    width: 188%;
+    width: 166.5%;
     
  }
  .contenedor-inputs .wrapper .label{
@@ -100,11 +102,11 @@ input:checked + .slider{
  .contenedor-inputs .wrapper input, select{
      height: inherit;     
      width: 100%;
-     border: 2px solid #888;
+     border: 2px solid rgb(88, 88, 88);
      border-radius: .5rem;
      outline: none;
      background-color: transparent;
-     color: #f7f7f7;
+     color: rgb(163, 160, 160);
      font-size: 1rem;
      text-indent: 1rem;
      transition: all .35s;
@@ -130,6 +132,7 @@ input:checked + .slider{
 
 
  .contenedor-inputs{
+     width: 100%;
      display: grid;
      gap: 10px;
      grid-template-columns: repeat(2,1fr);
@@ -142,7 +145,7 @@ input:checked + .slider{
 
 .contenedor-inputs .wrapper{
     grid-area: wrapper;
-   ;
+   
 }
 .contenedor-inputs .prioridad{
     grid-area: prioridad;
@@ -153,10 +156,11 @@ input:checked + .slider{
     grid-area: fecha;
     height: 3rem;
 }
+
 .contenedor-inputs .fecha input{
     height: inherit;     
-    width: 126%;
-    border: 2px solid #888;
+    width: 100%;
+    border: 2px solid rgb(163, 160, 160);
     border-radius: .5rem;
     outline: none;
     background-color: transparent;
@@ -179,7 +183,7 @@ input:checked + .slider{
 
 .btn-agregar{
     background-color: #28a745;
-    width: 126%;
+    width: 100%;
     color: #fff;
     font-size: 20px;
     height: 3rem;

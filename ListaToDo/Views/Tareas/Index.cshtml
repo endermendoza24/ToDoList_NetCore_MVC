@@ -101,7 +101,7 @@
                             
                             <td class="text-left">Completada</td>
                             <td class="text-center">Título de la tarea</td>
-                            <td class="text-center">Creada</td>
+                            
                             <td class="text-center">Prioridad</td>
                             <td class="text-center">Fecha Vencimiento</td>
                             <td class="text-center">Categoria</td>
@@ -121,12 +121,13 @@
                                 </td>
                                 <td class="text-center">
                                     <a href="/Tareas/Editar/@item.Id">
+
                                         @item.Titulo
                                     </a>
                                 </td>
-                                <td class="text-center">
+                                @* <td class="text-center">
                                     @item.FechaCreacion.ToShortDateString()
-                                </td>
+                                </td> *@
 
                                 <td class="text-center">
                                     @item.Prioridad.ToString()
