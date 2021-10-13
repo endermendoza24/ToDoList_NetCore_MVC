@@ -11,7 +11,7 @@ namespace ListaToDo.Helpers
     {
         public static SqlConnection GetConnection()
         {
-            return new SqlConnection(@"Server=ENDERSSONMENDOZ; Initial catalog=ListaToDo; Integrated security= true; MultipleActiveResultSets=true");
+            return new SqlConnection(@"Server=.; Initial catalog=ListaToDo; Integrated security= true; MultipleActiveResultSets=true");
         }
     }
 }

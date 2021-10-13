@@ -9,12 +9,15 @@ using System.Threading.Tasks;
 using ListaToDo.ViewModels;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Threading;
+
 
 namespace ListaToDo.Controllers
 {
     public class TareasController : Controller
     {
         private DatabaseContext _databaseContext;
+        private Timer timer;
 
         public TareasController(DatabaseContext databaseContext)
         {
@@ -59,6 +62,16 @@ namespace ListaToDo.Controllers
             return View("Index", viewModel);
         }
 
+
+        // public IActionResult Notificacion()
+        // {
+        //     TempData["Hola"] = "Hola como han estado todos ustedes mis amores";
+        //     timer = new Timer(TempData["Hola"], null, TimeSpan.Zero, TimeSpan.FromSeconds(5));
+        //     return RedirectToAction("Index");
+        // } probar esta funcionalidad
+
+
+
         public IActionResult Borrar(int id)
         {
             using (var db = DbHelper.GetConnection())
@@ -75,8 +88,8 @@ namespace ListaToDo.Controllers
         {
             if (ModelState.IsValid)
             {
-                // try
-                // {
+                try
+                {
 
 
                     using (var db = DbHelper.GetConnection())
@@ -94,11 +107,11 @@ namespace ListaToDo.Controllers
                         }
                     }
                     TempData["mensaje"] = "La tarea se ha creado correctamente";
-                //}
-                // catch (Exception)
-                // {
-                //     TempData["Error"] = "Ha ocurrido un error al guardar o actualizar la tarea";
-                // }                 
+                }
+                catch (Exception)
+                {
+                    TempData["Error"] = "Ha ocurrido un error al guardar o actualizar la tarea";
+                }                 
                 return RedirectToAction("Index");
             }
             else

@@ -16,8 +16,10 @@ namespace ListaToDo.Models
         [Display(Name = "Titulo")]
         public string Titulo { get; set; }
 
+     [StringLength(20, ErrorMessage = "El {0} debe ser al menos {2} y maximo {1} caracteres", MinimumLength = 1)]
 
-        public int Prioridad { get; set; }
+        [Display(Name = "Prioridad")]
+        public string Prioridad { get; set; }
 
         [DataType(DataType.DateTime)]
         [Display(Name = "Fecha vencimiento")]

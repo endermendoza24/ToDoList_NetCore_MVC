@@ -24,7 +24,7 @@ namespace ListaToDo.Services
         public Task StartAsync(CancellationToken cancellationToken)
         {
             WriteToFile("Proceso iniciado");
-            timer = new Timer(DoWork, null, TimeSpan.Zero, TimeSpan.FromSeconds(5));
+            timer = new Timer(DoWork, null, TimeSpan.Zero, TimeSpan.FromHours(5));
             return Task.CompletedTask;
         }
 

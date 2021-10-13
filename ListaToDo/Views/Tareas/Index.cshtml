@@ -5,19 +5,22 @@
 
 <html>
 <head>
+    <meta charset="utf-8">
     <title>Lista tareas</title>
     <link rel="stylesheet" href="~/css/tareas.css">
 </head>
 <body style="margin: 5px;">
 
-    <h1 style="font-size:30px; color:#fff; font-weight:700; text-transform:uppercase; text-align:center;">📗📗📗  Lista de tareas  📗📗📗</h1>
+    <h1 style="font-size:30px; color:#fff; font-weight:700; padding:10px; text-transform:uppercase; text-align:center;">📗📗📗  Lista de tareas  📗📗📗</h1>
     
     <div class="container">
+
+        @TempData["Hola"]
 
         @if (TempData["mensaje"] != null)
         {
 
-            <div class="alert alert-info  alert-dismissible fade show" role="alert">
+            <div class="alert alert-success  alert-dismissible fade show" role="alert">
 
                 @TempData["mensaje"]
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -67,9 +70,9 @@
                                     @Html.DropDownListFor(model => model.EditableItem.Prioridad, new List<SelectListItem> // esto rellena el select con datos estaticos
 
                                    {
-                                   new SelectListItem{Text="Baja", Value="1"},
-                                   new SelectListItem{Text="Media", Value="2"},
-                                   new SelectListItem{Text="Alta", Value="3"}
+                                   new SelectListItem{Text="Baja", Value="Baja"},
+                                   new SelectListItem{Text="Media", Value="Media"},
+                                   new SelectListItem{Text="Alta", Value="Alta"}
 
 
                                        }, new { @class = "selector" })
@@ -78,6 +81,16 @@
                                 <div class="fecha">
                                     @Html.EditorFor(model => model.EditableItem.Fecha, "{0:dd-MM-yyyy}", new { @class = "calendario" })
                                 </div>
+
+
+                                @* <div class="categoria">
+                                    @Html.DropDownListFor(model => model.EditableItem.IdCategoria, new List<SelectListItem>
+                                        {
+                                              new SelectListItem{Text="Universidad", Value="3009"}
+                                        })
+                                </div> *@
+
+
 
                                
                             <div class="categoria">
@@ -130,7 +143,7 @@
                                 </td> *@
 
                                 <td class="text-center">
-                                    @item.Prioridad.ToString()
+                                    @item.Prioridad
                                 </td>
 
 
