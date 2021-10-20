@@ -65,7 +65,7 @@ namespace ListaToDo.Controllers
 
         // public IActionResult Notificacion()
         // {
-        //     TempData["Hola"] = "Hola como han estado todos ustedes mis amores";
+        //     TempData["Hola"] = "Hola como han estado todos ustedes";
         //     timer = new Timer(TempData["Hola"], null, TimeSpan.Zero, TimeSpan.FromSeconds(5));
         //     return RedirectToAction("Index");
         // } probar esta funcionalidad
@@ -120,7 +120,9 @@ namespace ListaToDo.Controllers
 
         public IActionResult TareaCompletada(int id)
         {
-            using (var db = DbHelper.GetConnection())
+            //  a través de  este metodo se establece si una tarea ya esta completada o no lo esta
+            //  esto de manera visual 
+            using (var db = DbHelper.GetConnection())//  se establce la conexion a la bd
             {
                 ToDoListItem item = db.Get<ToDoListItem>(id);
                 if (item != null)

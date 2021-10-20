@@ -57,9 +57,8 @@
                                     @Html.HiddenFor(model => model.EditableItem.Id)
                                     <br>
                                     <div class="wrapper">
-                                        @Html.TextBoxFor(model => model.EditableItem.Nombre, new {  })
-                                        <div class="label">Agregar nueva categoría</div>
-                                        @* <span class="fas fa-trash"></span> *@
+                                        @Html.TextBoxFor(model => model.EditableItem.Nombre, new { placeholder="Agregar nueva cateegoría" })
+                                        
 
                                         <div>
                                             <button id="btn" type="submit" class="btn btn-success btn-lg"><i class="fas fa-save">@(Model.EditableItem.Id > 0 ? "  Actualizar" : "  Agregar")</i></button>

@@ -5,6 +5,9 @@ namespace ListaToDo.Models
 {
     public class ToDoListItem
     {
+         //  en esta clase se crea la abstracción del modelo en la base de  datos
+        //  aqui se representan cada una de las tablas modeladas  en la bd
+        //  se  validad de cierta manera, een especial los string
         public int Id { get; set; }
 
         public DateTime FechaCreacion { get; set; }
@@ -24,10 +27,10 @@ namespace ListaToDo.Models
         [DataType(DataType.DateTime)]
         [Display(Name = "Fecha vencimiento")]
 
-        public DateTime Fecha { get; set; } = System.DateTime.Today;
+        public DateTime Fecha { get; set; } = System.DateTime.Today; //  aqui establezco el valor predeterminado del campo de  fecha, dejandolo a la fecha actual del sistema
 
         public bool Completada { get; set; }
         // public string Nombre { get; set; }
-        public int IdCategoria { get; set; }
+        public int IdCategoria { get; set; } //   esta es la llave foranea correspondiente a la base de datos
     }
 }

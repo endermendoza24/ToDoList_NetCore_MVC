@@ -59,7 +59,7 @@ body{
      transition: all .35s;
  }
 
- input:focus{border-color: #8f44fd;}
+ input:focus{border-color: #28a745;}
  input:focus ~ .icon {
      color: #fff;
  }
