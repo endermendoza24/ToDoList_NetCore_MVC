@@ -24,9 +24,6 @@ namespace ListaToDo.Controllers
             _databaseContext = databaseContext;
         }
 
-
-
-
         //  Get
         public IActionResult Index()
         {
@@ -36,17 +33,16 @@ namespace ListaToDo.Controllers
                                   {
                                       Text = categoria.Nombre,
                                       Value = categoria.Id.ToString()
-                                  }).ToList();
-            //CategoriasList.Insert(0, new SelectListItem()
-            //{
-            //    Text = "--- Seleccione un elemento ---",
-            //    Value = string.Empty
-            //});
+                                  }).ToList();           
+
             ViewBag.ListOfProduct = CategoriasList;
+           
 
             TareasViewModel viewModel = new TareasViewModel();
             return View("Index", viewModel);
         }
+
+       
 
         [HttpPost]
         public IActionResult Index(CategoriaViewModel categoriaViewModel)
@@ -54,6 +50,7 @@ namespace ListaToDo.Controllers
             var selectedValue = categoriaViewModel.EditableItem.Id;
             return View(categoriaViewModel);
         }
+       
 
         public IActionResult Editar(int id)
         {

@@ -13,5 +13,6 @@ namespace ListaToDo.Models
 
         }
         public DbSet<Categoria> Categorias { get; set; }
+       
     }
 }

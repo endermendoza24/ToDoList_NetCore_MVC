@@ -10,14 +10,14 @@ using ListaToDo.Extensions;
 
 namespace TodoList.Controllers
 {
-    public class EtiquetaController : BaseController
+    public class UsuarioController : BaseController
     {
-        EtiquetaViewModel modeloEtiqueta = new EtiquetaViewModel(); //   instancia de la clase de  modelo Etiqueta
+        UsuarioViewModel modeloEtiqueta = new UsuarioViewModel(); //   instancia de la clase de  modelo Etiqueta
 
         public IActionResult Ver() //   este  es un método get, muestra la información recuperada de la base de datos
         {
 
-            EtiquetaViewModel viewModel = new EtiquetaViewModel(); //  instancia de la clase de view modelo--> Etiqueta
+            UsuarioViewModel viewModel = new UsuarioViewModel(); //  instancia de la clase de view modelo--> Etiqueta
 
             return View("Crear", viewModel);
         }
@@ -25,8 +25,8 @@ namespace TodoList.Controllers
         //  metodo post
         public IActionResult Editar(int id)
         {
-            EtiquetaViewModel viewModel = new EtiquetaViewModel();
-            viewModel.EditableItem = viewModel.Eti.FirstOrDefault(x => x.Id == id);
+            UsuarioViewModel viewModel = new UsuarioViewModel();
+            viewModel.EditableItem = viewModel.Usu.FirstOrDefault(x => x.Id == id);
             //  aqui se utiliza un metodo de LinQ llamado FirstOrDefault
             // este metodo devuelve el primer elemento de una secuencia, en este caso de la fuente de datos
             //  del  viewModel de Etiqueta
@@ -39,7 +39,7 @@ namespace TodoList.Controllers
         {
             using (var db = DbHelper.GetConnection())
             {
-                Etiqueta item = db.Get<Etiqueta>(id); //  aqui se obtiene el id de la lista que deseamos eliminar
+                Usuario item = db.Get<Usuario>(id); //  aqui se obtiene el id de la lista que deseamos eliminar
                 if (item != null)
                     db.Delete(item); //  si no resulta nulo, usando dapper procedemos al borrado del elemento en cuestion
                 TempData["mensaje"] = "Borrada con exito"; //  con esto mandamos un mensaje de exito al usuario a través de un tempData
@@ -51,7 +51,7 @@ namespace TodoList.Controllers
 
         //  este es el metodo más importante,   desde aca como el nombre lo indica se crea y se actualizan los 
         //  registros
-        public IActionResult CrearModificar(EtiquetaViewModel viewModel)
+        public IActionResult CrearModificar(UsuarioViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
@@ -64,16 +64,16 @@ namespace TodoList.Controllers
                         {
                             viewModel.EditableItem.FechaCreacion = DateTime.Now; //   se inserta la fecha actual en el 
                                                                                  //  elemento de fechaDeCreacion para que el usuario no tenga necesidad de hacerlo                
-                            db.Insert<Etiqueta>(viewModel.EditableItem); //  ocurre la acción de la inserción
+                            db.Insert<Usuario>(viewModel.EditableItem); //  ocurre la acción de la inserción
                         }
                         else //  sino se deveulve a la vista
                         {
-                            Etiqueta dbItem = db.Get<Etiqueta>(viewModel.EditableItem.Id);
-                            TryUpdateModelAsync<Etiqueta>(dbItem, "EditableItem");
-                            db.Update<Etiqueta>(dbItem);
+                            Usuario dbItem = db.Get<Usuario>(viewModel.EditableItem.Id);
+                            TryUpdateModelAsync<Usuario>(dbItem, "EditableItem");
+                            db.Update<Usuario>(dbItem);
                         }
                     }
-                    TempData["mensaje"] = "Categoría creada con éxito"; // si todo es correcto, se enviaun mensaje de 
+                    TempData["mensaje"] = "Usuario agregado con éxito"; // si todo es correcto, se enviaun mensaje de 
                                                                         //  satisfacción
                 //}
                 //catch (System.Exception)
@@ -85,7 +85,7 @@ namespace TodoList.Controllers
                 return RedirectToAction("Ver");
             }
             else
-                return View("Crear", new EtiquetaViewModel());
+                return View("Crear", new UsuarioViewModel());
         }
 
 

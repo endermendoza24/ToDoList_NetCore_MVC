@@ -8,19 +8,19 @@ using System.Threading.Tasks;
 
 namespace ListaToDo.ViewModels
 {
-    public class EtiquetaViewModel
+    public class UsuarioViewModel
     {
-        public EtiquetaViewModel()
+        public UsuarioViewModel()
         {
             using (var db = DbHelper.GetConnection())
             {
-                this.EditableItem = new Etiqueta();
-                this.Eti = db.Query<Etiqueta>("SELECT * FROM Etiquetas").ToList();
+                this.EditableItem = new Usuario();
+                this.Usu = db.Query<Usuario>("SELECT * FROM Usuarios").ToList();
             }
         }
 
-        public List<Etiqueta> Eti { get; set; }
+        public List<Usuario> Usu { get; set; }
 
-        public Etiqueta EditableItem { get; set; }
+        public Usuario EditableItem { get; set; }
     }
 }

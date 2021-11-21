@@ -1,17 +1,17 @@
 ﻿
-@model ListaToDo.ViewModels.EtiquetaViewModel;
+@model ListaToDo.ViewModels.UsuarioViewModel;
 
 <!DOCTYPE html>
 
 <html>
 <head>
-    <title>Etiquetas</title>
+    <title>Manejo de usuarios</title>
     <link rel="stylesheet" href="~/css/categorias.css">
 
 </head>
 <body style="margin: 5px;">
 
-    <h1 style="font-size:30px; color:#fff; padding:20px; font-weight:700; text-transform:uppercase; text-align:center;">✔✔✔  Agregar etiqueta  ✔✔✔</h1>
+    <h1 style="font-size:30px; color:#fff; padding:20px; font-weight:700; text-transform:uppercase; text-align:center;">✔✔✔  Registrar usuario  ✔✔✔</h1>
 
 
 
@@ -52,12 +52,14 @@
                     <thead>
                         <tr class="warning">
                             <td colspan="6">
-                                @using (var form = Html.BeginForm("CrearModificar", "Etiqueta", FormMethod.Post))
+                                @using (var form = Html.BeginForm("CrearModificar", "Usuario", FormMethod.Post))
                                 {
                                     @Html.HiddenFor(model => model.EditableItem.Id)
                                     <br>
                                     <div class="wrapper">
-                                        @Html.TextBoxFor(model => model.EditableItem.NombreEtiqueta, new { placeholder = "Agregar nueva etiqueta" })
+                                        @Html.TextBoxFor(model => model.EditableItem.Nombre, new { placeholder = "Registrar nuevo usuario" })
+
+                                        @Html.TextBoxFor(model => model.EditableItem.Clave, new { type="password", placeholder = "Agregar contraseña" })
 
 
                                         <div>
@@ -71,42 +73,48 @@
                         <tr class="titulo-tabla">
                             <td></td>
                             <td class="text-center">Nombre</td>
+                            <td class="text-center">Clave</td>
                             <td class="text-center">Fecha creación</td>
                             <td></td>
                         </tr>
                     </thead>
                     <tbody>
                         <tr class="bg-success">
-                            @foreach (var item in Model.Eti)
+                            @foreach (var item in Model.Usu)
                             {
-                            <tr class="danger">
+                        <tr class="danger">
 
-                                <td class="text-center">
-                                    <a href="/Etiqueta/Editar/@item.Id">
-                                        @item.Id
-                                    </a>
-                                </td>
-                                <td class="text-center">
-                                    <a href="/Etiqueta/Editar/@item.Id">
-                                        @item.NombreEtiqueta
-                                    </a>
-                                </td>
-                                <td class="text-center">
-                                    @item.FechaCreacion.ToShortDateString()
-                                </td>
+                            <td class="text-center">
+                                <a href="/Usuario/Editar/@item.Id">
+                                    @item.Id
+                                </a>
+                            </td>
+                            <td class="text-center">
+                                <a href="/Usuario/Editar/@item.Id">
+                                    @item.Nombre
+                                </a>
+                            </td>
+                            <td class="text-center">
+                                <a href="/Usuario/Editar/@item.Id">
+                                    @item.Clave
+                                </a>
+                            </td>
+                            <td class="text-center">
+                                @item.FechaCreacion.ToShortDateString()
+                            </td>
 
 
-                                <td class="text-center">
+                            <td class="text-center">
 
-                                    <button class="btn btn-danger delete"
-                                            data-id="@item.Id"
-                                            data-controller="Etiqueta"
-                                            data-action="Borrar"
-                                            data-body-message="Si elimina una etiqueta, todas las tareas de esa etiqueta serán borradas de forma permanente">
-                                        <i class="fas fa-trash">  Eliminar</i>
-                                    </button>
-                                </td>
-                            </tr>
+                                <button class="btn btn-danger delete"
+                                        data-id="@item.Id"
+                                        data-controller="Usuario"
+                                        data-action="Borrar"
+                                        data-body-message="Este usuario con toda la información relacionada a él será eliminado.">
+                                    <i class="fas fa-trash">  Eliminar</i>
+                                </button>
+                            </td>
+                        </tr>
                         }
 
                         </tbody>

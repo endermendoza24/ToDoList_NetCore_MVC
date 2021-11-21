@@ -30,7 +30,7 @@ namespace ListaToDo.Models
         public DateTime Fecha { get; set; } = System.DateTime.Today; //  aqui establezco el valor predeterminado del campo de  fecha, dejandolo a la fecha actual del sistema
 
         public bool Completada { get; set; }
-        // public string Nombre { get; set; }
+        // public string Nombre { get; set; }        
         public int IdCategoria { get; set; } //   esta es la llave foranea correspondiente a la base de datos
     }
 }

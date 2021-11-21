@@ -898,4 +898,4 @@ C:\Users\ENDERSSONMENDOZA\Documents\ProyectosVisual\ToDoList_NetCore_MVC\ListaTo
 C:\Users\ENDERSSONMENDOZA\Documents\ProyectosVisual\ToDoList_NetCore_MVC\ListaToDo\obj\Debug\net5.0\ListaToDo.Views.pdb
 C:\Users\ENDERSSONMENDOZA\Documents\ProyectosVisual\ToDoList_NetCore_MVC\ListaToDo\obj\Debug\net5.0\ListaToDo.csproj.CopyComplete
 C:\Users\ENDERSSONMENDOZA\Documents\ProyectosVisual\ToDoList_NetCore_MVC\ListaToDo\obj\Debug\net5.0\ListaToDo.genruntimeconfig.cache
-C:\Users\ENDERSSONMENDOZA\Documents\ProyectosVisual\ToDoList_NetCore_MVC\ListaToDo\obj\Debug\net5.0\Razor\Views\Etiqueta\Crear.cshtml.g.cs
+C:\Users\ENDERSSONMENDOZA\Documents\ProyectosVisual\ToDoList_NetCore_MVC\ListaToDo\obj\Debug\net5.0\Razor\Views\Usuario\Crear.cshtml.g.cs
