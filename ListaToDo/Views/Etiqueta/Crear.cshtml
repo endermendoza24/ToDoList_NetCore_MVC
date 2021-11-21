@@ -1,21 +1,21 @@
-
-@model ListaToDo.ViewModels.CategoriaViewModel;
+﻿
+@model ListaToDo.ViewModels.EtiquetaViewModel;
 
 <!DOCTYPE html>
 
 <html>
 <head>
-    <title>Categorías</title>
+    <title>Etiquetas</title>
     <link rel="stylesheet" href="~/css/categorias.css">
-    
+
 </head>
 <body style="margin: 5px;">
 
-    <h1 style="font-size:30px; color:#fff; padding:20px; font-weight:700; text-transform:uppercase; text-align:center;">✔✔✔  Agregar categoría  ✔✔✔</h1>
- 
+    <h1 style="font-size:30px; color:#fff; padding:20px; font-weight:700; text-transform:uppercase; text-align:center;">✔✔✔  Agregar etiqueta  ✔✔✔</h1>
 
 
-   @if (TempData["mensaje"] != null)
+
+    @if (TempData["mensaje"] != null)
     {
 
         <div class="alert alert-success  alert-dismissible fade show" role="alert">
@@ -27,7 +27,7 @@
 
         </div>
     }
-     @if (TempData["Error"] != null)
+    @if (TempData["Error"] != null)
     {
 
         <div class="alert alert-danger  alert-dismissible fade show" role="alert">
@@ -41,7 +41,7 @@
     }
 
     <div class="container">
-        
+
         <div class="row">
             <div class="col-md-12">
 
@@ -52,13 +52,13 @@
                     <thead>
                         <tr class="warning">
                             <td colspan="6">
-                                @using (var form = Html.BeginForm("CrearModificar", "Categoria", FormMethod.Post))
+                                @using (var form = Html.BeginForm("CrearModificar", "Etiqueta", FormMethod.Post))
                                 {
                                     @Html.HiddenFor(model => model.EditableItem.Id)
                                     <br>
                                     <div class="wrapper">
-                                        @Html.TextBoxFor(model => model.EditableItem.Nombre, new { placeholder="Agregar nueva cateegoría" })
-                                        
+                                        @Html.TextBoxFor(model => model.EditableItem.NombreEtiqueta, new { placeholder = "Agregar nueva etiqueta" })
+
 
                                         <div>
                                             <button id="btn" type="submit" class="btn btn-success btn-lg"><i class="fas fa-save">@(Model.EditableItem.Id > 0 ? "  Actualizar" : "  Agregar")</i></button>
@@ -77,18 +77,18 @@
                     </thead>
                     <tbody>
                         <tr class="bg-success">
-                            @foreach (var item in Model.Cate)
+                            @foreach (var item in Model.Eti)
                             {
                             <tr class="danger">
 
-                                 <td class="text-center">
-                                    <a href="/Categoria/Editar/@item.Id">
+                                <td class="text-center">
+                                    <a href="/Etiqueta/Editar/@item.Id">
                                         @item.Id
                                     </a>
                                 </td>
                                 <td class="text-center">
-                                    <a href="/Categoria/Editar/@item.Id">
-                                        @item.Nombre
+                                    <a href="/Etiqueta/Editar/@item.Id">
+                                        @item.NombreEtiqueta
                                     </a>
                                 </td>
                                 <td class="text-center">
@@ -97,18 +97,14 @@
 
 
                                 <td class="text-center">
-                                    
+
                                     <button class="btn btn-danger delete"
-                                        
-                                        data-id="@item.Id"
-                                        data-controller="Categoria"
-                                        data-action="Borrar"
-                                       
-                                       data-body-message ="Si elimina una categoría, todas las tareas de esa categoría serán borradas de forma permanente"
-                                       
-                                       
-                                       
-                                       ><i class="fas fa-trash">  Eliminar</i></button>
+                                            data-id="@item.Id"
+                                            data-controller="Etiqueta"
+                                            data-action="Borrar"
+                                            data-body-message="Si elimina una etiqueta, todas las tareas de esa etiqueta serán borradas de forma permanente">
+                                        <i class="fas fa-trash">  Eliminar</i>
+                                    </button>
                                 </td>
                             </tr>
                         }
@@ -118,7 +114,7 @@
                 </div>
             </div>
         </div>
-        
+
         <script src="~/js/push.min.js"></script>
 
         <script>

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "59iYHnXCD9UZg2PF4ZxmwIwdGC7EvcL1fPHIfA8+3An8LXR8dTw8s430p1wnuii6wSN1nld1dbG1yA2grUt4XQ==",
+  "dgSpecHash": "nlZXXKTuFAmZaa34xNqLllObj4OWGOln++y2Y6jw1bPkMK42kWF9BBdIE23itxZU2OEXSGj6PsRuRT65JXFyvQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ENDERSSONMENDOZA\\Documents\\ProyectosVisual\\ListaToDo\\ListaToDo\\ListaToDo.csproj",
+  "projectFilePath": "C:\\Users\\ENDERSSONMENDOZA\\Documents\\ProyectosVisual\\ToDoList_NetCore_MVC\\ListaToDo\\ListaToDo.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ENDERSSONMENDOZA\\.nuget\\packages\\dapper\\2.0.90\\dapper.2.0.90.nupkg.sha512",
     "C:\\Users\\ENDERSSONMENDOZA\\.nuget\\packages\\dapper.contrib\\2.0.78\\dapper.contrib.2.0.78.nupkg.sha512",

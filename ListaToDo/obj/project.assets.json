@@ -7865,11 +7865,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ENDERSSONMENDOZA\\Documents\\ProyectosVisual\\ListaToDo\\ListaToDo\\ListaToDo.csproj",
+      "projectUniqueName": "C:\\Users\\ENDERSSONMENDOZA\\Documents\\ProyectosVisual\\ToDoList_NetCore_MVC\\ListaToDo\\ListaToDo.csproj",
       "projectName": "ListaToDo",
-      "projectPath": "C:\\Users\\ENDERSSONMENDOZA\\Documents\\ProyectosVisual\\ListaToDo\\ListaToDo\\ListaToDo.csproj",
+      "projectPath": "C:\\Users\\ENDERSSONMENDOZA\\Documents\\ProyectosVisual\\ToDoList_NetCore_MVC\\ListaToDo\\ListaToDo.csproj",
       "packagesPath": "C:\\Users\\ENDERSSONMENDOZA\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ENDERSSONMENDOZA\\Documents\\ProyectosVisual\\ListaToDo\\ListaToDo\\obj\\",
+      "outputPath": "C:\\Users\\ENDERSSONMENDOZA\\Documents\\ProyectosVisual\\ToDoList_NetCore_MVC\\ListaToDo\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ENDERSSONMENDOZA\\AppData\\Roaming\\NuGet\\NuGet.Config",
