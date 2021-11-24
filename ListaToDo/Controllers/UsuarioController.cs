@@ -56,8 +56,8 @@ namespace TodoList.Controllers
             if (ModelState.IsValid)
             {
 
-                //try
-                //{
+                try
+                {
                     using (var db = DbHelper.GetConnection()) //  se usa la conexión
                     {
                         if (viewModel.EditableItem.Id <= 0)
@@ -75,13 +75,13 @@ namespace TodoList.Controllers
                     }
                     TempData["mensaje"] = "Usuario agregado con éxito"; // si todo es correcto, se enviaun mensaje de 
                                                                         //  satisfacción
-                //}
-                //catch (System.Exception)
-                //{
-                //    TempData["Error"] = "Ha ocurrido un error al guardar la categoría";
+                }
+                catch (System.Exception)
+                {
+                    TempData["Error"] = "Ha ocurrido un error al guardar la categoría";
 
-                //    //  de no ser correcto se envia un mensaje de  error
-                //}
+                    //  de no ser correcto se envia un mensaje de  error
+                }
                 return RedirectToAction("Ver");
             }
             else

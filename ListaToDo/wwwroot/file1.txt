@@ -35,3 +35,8 @@ Proceso iniciado
 WriteToFileHostedServices: Doing SomeWork at20/11/2021 08:16:36
 Proceso iniciado
 WriteToFileHostedServices: Doing SomeWork at20/11/2021 08:44:02
+Proceso iniciado
+WriteToFileHostedServices: Doing SomeWork at23/11/2021 10:01:01
+Proceso iniciado
+WriteToFileHostedServices: Doing SomeWork at23/11/2021 10:21:11
+Proceso detenido
